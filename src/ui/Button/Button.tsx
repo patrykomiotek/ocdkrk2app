@@ -1,3 +1,5 @@
+import { MouseEventHandler } from 'react';
+
 type ColorKey =
   | 'turquoise'
   | 'emerald'
@@ -48,7 +50,7 @@ interface FancyButtonProps {
   children: React.ReactNode;
   bgColor?: ColorKey;
   color?: ColorKey;
-  onClick?: () => void;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 export const Button = ({

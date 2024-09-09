@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { useState } from 'react';
+import { MouseEventHandler, useState } from 'react';
 import { Button, Text } from '../../ui';
 
 export const Generator = () => {
@@ -7,7 +7,7 @@ export const Generator = () => {
   const [id, setId] = useState(uuidv4());
   // const state = useState(uuidv4());
 
-  const handleClick = () => {
+  const handleClick: MouseEventHandler<HTMLButtonElement> = () => {
     // id = uuidv4();
     // console.log('id: ', id);
     setId(uuidv4());
@@ -15,6 +15,7 @@ export const Generator = () => {
   };
 
   return (
+    // <div onClick={handleClick}>
     <div>
       <Text>{id}</Text>
       {/* <Text>Statyczny tekst</Text> */}
