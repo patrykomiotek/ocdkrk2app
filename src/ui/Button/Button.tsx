@@ -77,3 +77,12 @@ export const Button = ({
     </button>
   );
 };
+
+type ButtonProps = typeof Button;
+type ButtonPropsReturnType = ReturnType<typeof Button>;
+type ButtonPropsParameters = Parameters<typeof Button>[0];
+
+// const myButton: ButtonPropsParameters = {
+//   bgColor,
+//   children
+// }
