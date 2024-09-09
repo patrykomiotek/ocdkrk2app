@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import './App.css';
-import { Button } from './ui';
+import { Button, Text } from './ui';
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <Button />
+      {/* <Button /> */}
+      <Text>Hello world</Text>
     </>
   );
 }
