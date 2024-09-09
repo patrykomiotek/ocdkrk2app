@@ -6,9 +6,9 @@ import { RegistrationFormState } from './components/RegistrationForm/Registratio
 function App() {
   return (
     <>
-      {/* <Generator /> */}
+      <Generator />
       {/* <RegistrationFormState /> */}
-      <RegistrationFormRefs />
+      {/* <RegistrationFormRefs /> */}
     </>
   );
 }

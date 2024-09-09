@@ -1,4 +1,5 @@
 // export const Text = ({ children }: { children: string }) => {
+import { memo } from 'react';
 
 type Props = {
   children: string;
@@ -10,9 +11,10 @@ type Props = {
 // };
 
 // #2
-export const Text = ({ children }: Props) => {
+export const Text = memo(({ children }: Props) => {
   return <p>{children}</p>;
-};
+});
+Text.displayName = 'memo(Text)';
 
 // #3
 // export const Text = ({ children }: { children: string }) => {

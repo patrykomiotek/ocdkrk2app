@@ -7,7 +7,9 @@ export const Generator = () => {
   const [id, setId] = useState(uuidv4());
   // const state = useState(uuidv4());
 
-  const handleClick: MouseEventHandler<HTMLButtonElement> = () => {
+  const handleClick: MouseEventHandler<
+    HTMLButtonElement
+  > = () => {
     // id = uuidv4();
     // console.log('id: ', id);
     setId(uuidv4());
@@ -18,7 +20,7 @@ export const Generator = () => {
     // <div onClick={handleClick}>
     <div>
       <Text>{id}</Text>
-      {/* <Text>Statyczny tekst</Text> */}
+      <Text>Statyczny tekst</Text>
 
       <Button onClick={handleClick}>Refresh</Button>
     </div>
