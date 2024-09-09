@@ -1,14 +1,10 @@
-import { useState } from 'react';
 import './App.css';
-import { Button, Text } from './ui';
+import { Generator } from './components/Generator/Generator';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      {/* <Button /> */}
-      <Text>Hello world</Text>
+      <Generator />
     </>
   );
 }
