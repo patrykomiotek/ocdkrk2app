@@ -1,4 +1,4 @@
-import { Header } from '../ui';
+import { Header } from '@ui';
 
 export const ProductsListPage = () => {
   return (

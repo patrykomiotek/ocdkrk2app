@@ -1,8 +1,9 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button, Input } from '../../ui';
-import { ProductDto, productSchema } from '../../types/types-schema';
-import { saveProduct } from '../../services/products';
+
+import { Button, Input } from '@ui';
+import { ProductDto, productSchema } from '@apptypes/types-schema';
+import { saveProduct } from '@services/products';
 
 class Mieso {}
 

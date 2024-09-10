@@ -1,9 +1,5 @@
-import {
-  type ComponentProps,
-  useId,
-  forwardRef,
-  ComponentPropsWithRef,
-} from 'react';
+import { Label } from '@atoms/Label';
+import { type ComponentProps, useId, forwardRef, ComponentPropsWithRef } from 'react';
 import { type FieldError } from 'react-hook-form';
 
 // type Props = {
@@ -18,10 +14,7 @@ interface Props extends ComponentPropsWithRef<'input'> {
 // HTMLInputElement
 
 export const Input = forwardRef(
-  (
-    { label, className, error, ...rest }: Props,
-    ref: React.ForwardedRef<HTMLInputElement>,
-  ) => {
+  ({ label, className, error, ...rest }: Props, ref: React.ForwardedRef<HTMLInputElement>) => {
     const id = useId();
     const errorClasses = error
       ? 'text-red-900 ring-red-600 placeholder:text-red-400 focus:ring-red-500'
@@ -29,12 +22,7 @@ export const Input = forwardRef(
 
     return (
       <div className="mt-4">
-        <label
-          htmlFor={id}
-          className="mb-2 block text-lg font-semibold text-gray-900"
-        >
-          {label}
-        </label>
+        <Label id={id}>{label}</Label>
         <input
           ref={ref}
           id={id}
@@ -42,9 +30,7 @@ export const Input = forwardRef(
           {...rest}
         />
         {error && (
-          <p className="mt-2 pl-2 text-base text-red-400 dark:text-red-500">
-            {error.message}
-          </p>
+          <p className="mt-2 pl-2 text-base text-red-400 dark:text-red-500">{error.message}</p>
         )}
       </div>
     );

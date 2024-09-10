@@ -1,5 +1,5 @@
 import { ProductForm } from '../components/RegistrationForm/ProductForm';
-import { Header } from '../ui';
+import { Header } from '@ui';
 
 export const CreateProductPage = () => {
   return (

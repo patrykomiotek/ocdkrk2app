@@ -1,5 +1,5 @@
 import { AuthInfo } from '../components/Auth/AuthInfo';
-import { Header } from '../ui';
+import { Header } from '@ui';
 
 export const HomePage = () => {
   return (

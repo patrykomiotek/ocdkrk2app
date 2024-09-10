@@ -1,5 +1,5 @@
 import { type FormEventHandler, useRef } from 'react';
-import { Input } from '../../ui';
+import { Input } from '@ui';
 
 export const RegistrationFormRefs = () => {
   const emailFieldRef = useRef<HTMLInputElement>(null);
@@ -33,12 +33,7 @@ export const RegistrationFormRefs = () => {
     <div>
       <h2>User Information</h2>
       <form onSubmit={handleSubmit}>
-        <Input
-          ref={emailFieldRef}
-          label="Email"
-          type="email"
-          defaultValue="alamakota@wp.pl"
-        />
+        <Input ref={emailFieldRef} label="Email" type="email" defaultValue="alamakota@wp.pl" />
         <Input ref={passwordFieldRef} label="Password" type="password" />
         <Input
           ref={languageFieldRef}

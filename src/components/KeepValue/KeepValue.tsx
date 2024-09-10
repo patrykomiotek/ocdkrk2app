@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
-import { Button } from '../../ui';
+
+import { Button } from '@ui';
 
 export const KeepValue = () => {
   const [myNumber, setMyNumber] = useState(2);

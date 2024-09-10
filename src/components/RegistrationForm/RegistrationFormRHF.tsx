@@ -1,14 +1,9 @@
-import {
-  FieldValue,
-  FieldValues,
-  SubmitHandler,
-  useForm,
-} from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { useRef } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { Button, Input } from '../../ui';
-import { RegistrationDto, registrationSchema } from '../../types/types-schema';
+import { Button, Input } from '@ui';
+import { RegistrationDto, registrationSchema } from '@apptypes/types-schema';
 
 // type RegistrationData = {
 //   email: string;
@@ -39,9 +34,7 @@ export const RegistrationFormRHF = () => {
   //   });
   // };
 
-  const handleRegistrationFormSubmit: SubmitHandler<RegistrationDto> = (
-    data,
-  ) => {
+  const handleRegistrationFormSubmit: SubmitHandler<RegistrationDto> = (data) => {
     console.log(data);
   };
 

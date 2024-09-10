@@ -1,5 +1,5 @@
 import { type FormEventHandler, useState } from 'react';
-import { Input } from '../../ui';
+import { Input } from '@ui';
 
 export const RegistrationFormState = () => {
   const [email, setEmail] = useState<string>('ala@makota.pl');
