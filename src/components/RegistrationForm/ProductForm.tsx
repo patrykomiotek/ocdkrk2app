@@ -2,7 +2,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Button, Input } from '@ui';
-import { ProductDto, productSchema } from '@apptypes/types-schema';
+import { CreateProductDto, productSchema } from '@apptypes/types-schema';
 import { saveProduct } from '@services/products';
 
 class Mieso {}
@@ -12,11 +12,11 @@ export const ProductForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ProductDto>({
+  } = useForm<CreateProductDto>({
     resolver: zodResolver(productSchema),
   });
 
-  const handleProductFormSubmit: SubmitHandler<ProductDto> = async (data) => {
+  const handleProductFormSubmit: SubmitHandler<CreateProductDto> = async (data) => {
     try {
       const response = await saveProduct(data);
       // response.records[0].fields.dimensions

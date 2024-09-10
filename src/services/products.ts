@@ -1,4 +1,4 @@
-import { ProductDto } from '../types/types-schema';
+import { CreateProductDto } from '../types/types-schema';
 
 // webpack: process.env.NAME;
 const AIRTABLE_API_URL = import.meta.env.VITE_API_BASE_URL;
@@ -70,7 +70,7 @@ declare const response: ApiResponse<ProductFields>;
 //   ],
 // };
 
-export const saveProduct = async (data: ProductDto) => {
+export const saveProduct = async (data: CreateProductDto) => {
   const response = await fetch(`${AIRTABLE_API_URL}/products`, {
     method: 'POST',
     headers: {

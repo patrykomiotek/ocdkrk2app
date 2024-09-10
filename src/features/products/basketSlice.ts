@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "../../store";
-import { ProductDto } from "./services";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import type { RootState } from '../../store';
+import { ProductDto } from '@apptypes/types-schema';
 
 // Define a type for the slice state
 export interface State {
@@ -13,7 +13,7 @@ const initialState: State = {
 };
 
 export const basketSlice = createSlice({
-  name: "basket",
+  name: 'basket',
   initialState,
   reducers: {
     // Use the PayloadAction type to declare the contents of `action.payload`
@@ -21,11 +21,9 @@ export const basketSlice = createSlice({
       // state.value += action.payload;
       state.products.push(action.payload);
     },
-    remove: (state, action: PayloadAction<ProductDto["id"]>) => {
+    remove: (state, action: PayloadAction<ProductDto['id']>) => {
       // state.value -= action.payload;
-      state.products = state.products.filter(
-        (elem) => elem.id !== action.payload
-      );
+      state.products = state.products.filter((elem) => elem.id !== action.payload);
     },
   },
 });
@@ -34,7 +32,6 @@ export const { add, remove } = basketSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectBasketProducts = (state: RootState) => state.basket.products;
-export const selectBasketProductsCount = (state: RootState) =>
-  state.basket.products.length;
+export const selectBasketProductsCount = (state: RootState) => state.basket.products.length;
 
 export default basketSlice.reducer;

@@ -40,4 +40,7 @@ export const productSchema = zod.object({
   price: zod.number().positive(),
   dimensions: zod.number().positive(),
 });
-export type ProductDto = zod.infer<typeof productSchema>;
+
+export type CreateProductDto = zod.infer<typeof productSchema>;
+
+export type ProductDto = CreateProductDto & { id: string };
