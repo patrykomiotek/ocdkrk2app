@@ -1,4 +1,5 @@
 // import './App.css';
+import { RouterProvider } from 'react-router-dom';
 import { AuthProvider } from './components/Auth/AuthContext';
 import { AuthInfo } from './components/Auth/AuthInfo';
 // import { AuthContext } from './components/Auth/AuthContext';
@@ -9,6 +10,7 @@ import { RegistrationFormRefs } from './components/RegistrationForm/Registration
 import { RegistrationFormRHF } from './components/RegistrationForm/RegistrationFormRHF';
 import { RegistrationFormState } from './components/RegistrationForm/RegistrationFormState';
 import { useState } from 'react';
+import { router } from './routes';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -22,7 +24,7 @@ function App() {
       {/* <RegistrationFormRHF /> */}
       {/* <ProductForm /> */}
       <AuthProvider value={{ isLoggedIn, setIsLoggedIn }}>
-        <AuthInfo />
+        <RouterProvider router={router} />
       </AuthProvider>
 
       {/* <AuthInfo /> */}

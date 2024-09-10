@@ -55,7 +55,7 @@ type FancyButtonProps = {
 
 export const Button = ({
   children,
-  bgColor = 'turquoise',
+  bgColor = 'peterRiver',
   color = 'clouds',
   onClick,
 }: FancyButtonProps) => {
