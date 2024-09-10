@@ -18,7 +18,7 @@ interface Props extends ComponentPropsWithRef<'input'> {
 export const Input = forwardRef(
   (
     { label, className, ...rest }: Props,
-    ref: React.ForwardedRef<HTMLInputElement>
+    ref: React.ForwardedRef<HTMLInputElement>,
   ) => {
     const id = useId();
     return (
@@ -37,7 +37,7 @@ export const Input = forwardRef(
         />
       </div>
     );
-  }
+  },
 );
 Input.displayName = 'forwardRef(Input)';
 
