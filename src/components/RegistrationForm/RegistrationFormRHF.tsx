@@ -5,21 +5,26 @@ import {
   useForm,
 } from 'react-hook-form';
 import { useRef } from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Button, Input } from '../../ui';
+import { RegistrationDto, registrationSchema } from './types-schema';
 
-type RegistrationData = {
-  email: string;
-  password: string;
-  language: string;
-};
+// type RegistrationData = {
+//   email: string;
+//   password: string;
+//   language: string;
+//   confirmPassword: string;
+// };
 
 export const RegistrationFormRHF = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<RegistrationData>();
+  } = useForm<RegistrationDto>({
+    resolver: zodResolver(registrationSchema),
+  });
   const languageFieldRef = useRef<HTMLInputElement>(null);
 
   // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -34,7 +39,7 @@ export const RegistrationFormRHF = () => {
   //   });
   // };
 
-  const handleRegistrationFormSubmit: SubmitHandler<RegistrationData> = (
+  const handleRegistrationFormSubmit: SubmitHandler<RegistrationDto> = (
     data
   ) => {
     console.log(data);
@@ -61,18 +66,29 @@ export const RegistrationFormRHF = () => {
           type="email"
           defaultValue="alamakota@wp.pl"
         />
+        {errors.email && <p className="text-red">{errors.email.message}</p>}
+
+        <Input {...register('password')} label="Password" type="password" />
+        {errors.password && (
+          <p className="text-red">{errors.password.message}</p>
+        )}
         <Input
-          {...register('password', { required: true, min: 3 })}
-          label="Password"
+          {...register('confirmPassword')}
+          label="Confirm password"
           type="password"
         />
-        {errors.password && <p className="text-red">Password is to short</p>}
+        {errors.confirmPassword && (
+          <p className="text-red">{errors.confirmPassword.message}</p>
+        )}
         <Input
           {...register('language')}
           label="Favorite Programming Language"
           type="text"
           onChange={handleLanguageChange}
         />
+        {errors.language && (
+          <p className="text-red">{errors.language.message}</p>
+        )}
 
         {/* <div>
           <label htmlFor="password">Password:</label>
