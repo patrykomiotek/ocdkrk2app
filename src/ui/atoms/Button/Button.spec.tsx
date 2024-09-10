@@ -11,7 +11,7 @@ describe('Button component', () => {
     // provide callback and check number of calls of this callback
   });
   it('it should not have violations', async () => {
-    const { container, debug } = render(<Button>Click me</Button>);
+    const { container } = render(<Button>Click me</Button>);
     const result = await axe(container);
     // console.log(container);
     // debug();

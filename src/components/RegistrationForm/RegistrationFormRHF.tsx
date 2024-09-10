@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useRef } from 'react';
+import { ChangeEvent, useRef } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Button, Input } from '@ui';
@@ -38,7 +38,7 @@ export const RegistrationFormRHF = () => {
     console.log(data);
   };
 
-  const handleLanguageChange = (_event) => {
+  const handleLanguageChange = (_event: ChangeEvent) => {
     const value = languageFieldRef.current?.value || '';
     if (languageFieldRef.current) {
       if (value.toLocaleLowerCase() === 'php') {

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-"baseUrl": "./src",
+    "baseUrl": "./src",
     "paths": {
       "@components/*": ["components/*"],
       "@ui": ["ui"],
@@ -31,9 +31,11 @@
 
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false, // ❌ only for workshop app
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+
   },
   "include": ["src"]
 }

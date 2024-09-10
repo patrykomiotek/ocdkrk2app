@@ -7,13 +7,14 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-} satisfies Meta<typeof Text>;
+} satisfies Meta<typeof Label>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const _Label: Story = {
   args: {
+    id: '123',
     children: 'Lorem ipsum sit dolor',
   },
 };

@@ -1,4 +1,4 @@
-import { type FormEventHandler, useRef } from 'react';
+import { ChangeEvent, type FormEventHandler, useRef } from 'react';
 import { Input } from '@ui';
 
 export const RegistrationFormRefs = () => {
@@ -18,7 +18,7 @@ export const RegistrationFormRefs = () => {
     });
   };
 
-  const handleLanguageChange = (_event) => {
+  const handleLanguageChange = (_event: ChangeEvent) => {
     const value = languageFieldRef.current?.value || '';
     if (languageFieldRef.current) {
       if (value.toLocaleLowerCase() === 'php') {

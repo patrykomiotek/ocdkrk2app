@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-"baseUrl": "./src",
+    "baseUrl": "./src",
     "paths": {
       "@components/*": ["components/*"],
       "@ui": ["ui"],
@@ -30,8 +30,8 @@
 
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": true, // ❌ only for workshop app
     "noFallthroughCasesInSwitch": true
   },
   "include": ["vite.config.ts"]

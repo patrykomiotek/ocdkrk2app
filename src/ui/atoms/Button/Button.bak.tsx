@@ -12,8 +12,9 @@ console.log(myOnlyTrue);
 
 type IsTrue<T extends true> = T;
 
-type A = IsTrue<'fdgdf'>;
-type B = IsTrue<true>;
+// @ts-expect-error
+declare type A = IsTrue<'fdgdf'>;
+declare type B = IsTrue<true>;
 // IsEqual<A, B>
 // Expect<>
 
@@ -33,11 +34,7 @@ export const Button = ({
   color = 'clouds',
   children,
 }: CustomButtonProps) => {
-  return (
-    <button style={{ backgroundColor: bgColor, color }}>
-      {label || children}
-    </button>
-  );
+  return <button style={{ backgroundColor: bgColor, color }}>{label || children}</button>;
 };
 {
   /* <Button label="Click me" />; */
@@ -118,7 +115,7 @@ const colors: Record<ColorKey, string> = {
 };
 
 // JS/ES6
-const ala = 'makota';
+declare const ala = 'makota';
 // ala = 'psa';
 
 // plain JS, ES6+
@@ -157,10 +154,10 @@ type MyReadOnly<T> = {
   readonly [K in keyof T]: T[K];
 };
 
-type ColorKeys = keyof typeof colorsConfig;
-type MyColor = typeof colorsConfig;
+declare type ColorKeys = keyof typeof colorsConfig;
+declare type MyColor = typeof colorsConfig;
 
-type MySuperColors = MyReadOnly<typeof colorsConfig>;
+declare type MySuperColors = MyReadOnly<typeof colorsConfig>;
 
 // type MyColor = Readonly<typeof colorsConfig>;
 // let asbestosColor: MyColor = colorsConfig.asbestos;
