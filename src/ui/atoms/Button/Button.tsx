@@ -72,7 +72,7 @@ export const Button = ({
   };
 
   return (
-    <button style={buttonStyle} onClick={onClick}>
+    <button style={buttonStyle} onClick={onClick} className="my-4">
       {children}
     </button>
   );

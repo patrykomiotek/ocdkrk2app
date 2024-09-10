@@ -16,12 +16,25 @@ interface Props extends ComponentPropsWithRef<'input'> {
 // HTMLInputElement
 
 export const Input = forwardRef(
-  ({ label, ...rest }: Props, ref: React.ForwardedRef<HTMLInputElement>) => {
+  (
+    { label, className, ...rest }: Props,
+    ref: React.ForwardedRef<HTMLInputElement>
+  ) => {
     const id = useId();
     return (
-      <div>
-        <label htmlFor={id}>{label}</label>
-        <input ref={ref} id={id} {...rest} />
+      <div className="mt-4">
+        <label
+          htmlFor={id}
+          className="mb-2 block text-lg font-semibold text-gray-900"
+        >
+          {label}
+        </label>
+        <input
+          ref={ref}
+          id={id}
+          className={`block w-full appearance-none rounded-lg border border-gray-200 bg-white px-[calc(theme(spacing.3)-1px)] py-[calc(theme(spacing.2)-1px)] text-lg text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 ${className}`}
+          {...rest}
+        />
       </div>
     );
   }

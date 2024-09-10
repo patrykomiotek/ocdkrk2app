@@ -11,6 +11,8 @@ export const registrationSchema = zod
     confirmPassword: zod.string().min(3, { message: 'Password is too short' }),
     language: zod.string().min(1),
   })
+  // .pick
+  // .omit
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match",
     path: ['confirmPassword'], // path of error

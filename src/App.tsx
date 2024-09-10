@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 import { Generator } from './components/Generator/Generator';
 import { KeepValue } from './components/KeepValue/KeepValue';
 import { RegistrationFormRefs } from './components/RegistrationForm/RegistrationFormRefs';

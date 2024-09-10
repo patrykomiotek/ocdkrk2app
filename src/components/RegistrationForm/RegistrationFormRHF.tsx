@@ -65,29 +65,63 @@ export const RegistrationFormRHF = () => {
           label="Email"
           type="email"
           defaultValue="alamakota@wp.pl"
+          className={
+            errors.email
+              ? 'text-red-900 ring-red-600 placeholder:text-red-400 focus:ring-red-500'
+              : ''
+          }
         />
-        {errors.email && <p className="text-red">{errors.email.message}</p>}
+        {errors.email && (
+          <p className="mt-2 pl-2 text-base text-red-400 dark:text-red-500">
+            {errors.email.message}
+          </p>
+        )}
 
-        <Input {...register('password')} label="Password" type="password" />
+        <Input
+          {...register('password')}
+          label="Password"
+          type="password"
+          className={
+            errors.password
+              ? 'text-red-900 ring-red-600 placeholder:text-red-400 focus:ring-red-500'
+              : ''
+          }
+        />
         {errors.password && (
-          <p className="text-red">{errors.password.message}</p>
+          <p className="mt-2 pl-2 text-base text-red-400 dark:text-red-500">
+            {errors.password.message}
+          </p>
         )}
         <Input
           {...register('confirmPassword')}
           label="Confirm password"
           type="password"
+          className={
+            errors.confirmPassword
+              ? 'text-red-900 ring-red-600 placeholder:text-red-400 focus:ring-red-500'
+              : ''
+          }
         />
         {errors.confirmPassword && (
-          <p className="text-red">{errors.confirmPassword.message}</p>
+          <p className="mt-2 pl-2 text-base text-red-400 dark:text-red-500">
+            {errors.confirmPassword.message}
+          </p>
         )}
         <Input
           {...register('language')}
           label="Favorite Programming Language"
           type="text"
           onChange={handleLanguageChange}
+          className={
+            errors.language
+              ? 'text-red-900 ring-red-600 placeholder:text-red-400 focus:ring-red-500'
+              : ''
+          }
         />
         {errors.language && (
-          <p className="text-red">{errors.language.message}</p>
+          <p className="mt-2 pl-2 text-base text-red-400 dark:text-red-500">
+            {errors.language.message}
+          </p>
         )}
 
         {/* <div>
