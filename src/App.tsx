@@ -24,6 +24,8 @@ function App() {
       <AuthProvider value={{ isLoggedIn, setIsLoggedIn }}>
         <AuthInfo />
       </AuthProvider>
+
+      {/* <AuthInfo /> */}
     </>
   );
 }
