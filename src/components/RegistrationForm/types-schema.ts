@@ -33,3 +33,11 @@ export type RegistrationDto = zod.infer<typeof registrationSchema>;
 // };
 
 // User.parse({ username: "Ludwig" });
+
+export const productSchema = zod.object({
+  name: zod.string().min(1, { message: "What's the hane?" }),
+  description: zod.string().min(1, { message: ' Put some desc' }),
+  price: zod.number().positive(),
+  dimensions: zod.number().positive(),
+});
+export type ProductDto = zod.infer<typeof productSchema>;
