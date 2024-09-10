@@ -7,9 +7,7 @@ export const RegistrationFormRefs = () => {
   const languageFieldRef = useRef<HTMLInputElement>(null);
 
   // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  const handleSubmit: FormEventHandler<HTMLFormElement> = (
-    event
-  ) => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     // Handle form submission logic here
     // console.log({ email, password, language });
@@ -20,24 +18,28 @@ export const RegistrationFormRefs = () => {
     });
   };
 
+  const handleLanguageChange = (_event) => {
+    const value = languageFieldRef.current?.value || '';
+    if (languageFieldRef.current) {
+      if (value.toLocaleLowerCase() === 'php') {
+        languageFieldRef.current.style.border = '#f00 1px solid';
+      } else {
+        languageFieldRef.current.style.border = '';
+      }
+    }
+  };
+
   return (
     <div>
       <h2>User Information</h2>
       <form onSubmit={handleSubmit}>
-        <Input
-          ref={emailFieldRef}
-          label="Email"
-          type="email"
-        />
-        <Input
-          ref={passwordFieldRef}
-          label="Password"
-          type="password"
-        />
+        <Input ref={emailFieldRef} label="Email" type="email" />
+        <Input ref={passwordFieldRef} label="Password" type="password" />
         <Input
           ref={languageFieldRef}
           label="Favorite Programming Language"
           type="text"
+          onChange={handleLanguageChange}
         />
 
         {/* <div>
