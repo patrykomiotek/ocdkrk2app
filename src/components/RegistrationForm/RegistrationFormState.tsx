@@ -2,7 +2,7 @@ import { type FormEventHandler, useState } from 'react';
 import { Input } from '../../ui';
 
 export const RegistrationFormState = () => {
-  const [email, setEmail] = useState<string>('');
+  const [email, setEmail] = useState<string>('ala@makota.pl');
   const [password, setPassword] = useState('');
   const [language, setLanguage] = useState('');
 
@@ -32,6 +32,7 @@ export const RegistrationFormState = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <Input
+          // style={{ border: conditional }}
           label="Favorite Programming Language"
           type="text"
           value={language}

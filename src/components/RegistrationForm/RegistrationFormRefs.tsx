@@ -33,7 +33,12 @@ export const RegistrationFormRefs = () => {
     <div>
       <h2>User Information</h2>
       <form onSubmit={handleSubmit}>
-        <Input ref={emailFieldRef} label="Email" type="email" />
+        <Input
+          ref={emailFieldRef}
+          label="Email"
+          type="email"
+          defaultValue="alamakota@wp.pl"
+        />
         <Input ref={passwordFieldRef} label="Password" type="password" />
         <Input
           ref={languageFieldRef}
