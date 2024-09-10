@@ -1,7 +1,10 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Input } from '../../ui';
-import { ProductDto, productSchema } from './types-schema';
+import { ProductDto, productSchema } from '../../types/types-schema';
+import { saveProduct } from '../../services/products';
+
+class Mieso {}
 
 export const ProductForm = () => {
   const {
@@ -12,32 +15,10 @@ export const ProductForm = () => {
     resolver: zodResolver(productSchema),
   });
 
-  // webpack: process.env.NAME;
-  const AIRTABLE_API_URL = import.meta.env.VITE_API_BASE_URL;
-  const AIRTABLE_API_TOKEN = import.meta.env.VITE_API_TOKEN;
-
   const handleProductFormSubmit: SubmitHandler<ProductDto> = async (data) => {
     try {
-      const response = await fetch(`${AIRTABLE_API_URL}/products`, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${AIRTABLE_API_TOKEN}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          records: [
-            {
-              fields: data,
-            },
-          ],
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to submit the form');
-      }
-
-      console.log('Form submitted successfully');
+      const response = await saveProduct(data);
+      // response.records[0].fields.dimensions
     } catch (error) {
       console.error('Error submitting form:', error);
     }

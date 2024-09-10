@@ -8,7 +8,7 @@ import { useRef } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Button, Input } from '../../ui';
-import { RegistrationDto, registrationSchema } from './types-schema';
+import { RegistrationDto, registrationSchema } from '../../types/types-schema';
 
 // type RegistrationData = {
 //   email: string;
@@ -40,7 +40,7 @@ export const RegistrationFormRHF = () => {
   // };
 
   const handleRegistrationFormSubmit: SubmitHandler<RegistrationDto> = (
-    data
+    data,
   ) => {
     console.log(data);
   };
