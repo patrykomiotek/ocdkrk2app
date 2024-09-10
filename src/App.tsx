@@ -7,8 +7,11 @@ import { ProductForm } from './components/RegistrationForm/ProductForm';
 import { RegistrationFormRefs } from './components/RegistrationForm/RegistrationFormRefs';
 import { RegistrationFormRHF } from './components/RegistrationForm/RegistrationFormRHF';
 import { RegistrationFormState } from './components/RegistrationForm/RegistrationFormState';
+import { useState } from 'react';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
   return (
     <>
       {/* <Generator /> */}
@@ -17,7 +20,7 @@ function App() {
       {/* <KeepValue /> */}
       {/* <RegistrationFormRHF /> */}
       {/* <ProductForm /> */}
-      <AuthContext.Provider value={{ isLoggedIn: true }}>
+      <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
         <AuthInfo />
       </AuthContext.Provider>
     </>
