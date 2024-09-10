@@ -1,4 +1,4 @@
-import { MouseEventHandler } from 'react';
+import { ComponentPropsWithoutRef, MouseEventHandler } from 'react';
 
 type ColorKey =
   | 'turquoise'
@@ -46,12 +46,12 @@ const colors: Record<ColorKey, string> = {
   asbestos: '#7f8c8d',
 };
 
-interface FancyButtonProps {
+type FancyButtonProps = {
   children: React.ReactNode;
   bgColor?: ColorKey;
   color?: ColorKey;
   onClick?: MouseEventHandler<HTMLButtonElement>;
-}
+} & ComponentPropsWithoutRef<'button'>;
 
 export const Button = ({
   children,
