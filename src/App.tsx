@@ -1,6 +1,7 @@
 // import './App.css';
+import { AuthProvider } from './components/Auth/AuthContext';
 import { AuthInfo } from './components/Auth/AuthInfo';
-import { AuthContext } from './components/Auth/AuthContext';
+// import { AuthContext } from './components/Auth/AuthContext';
 import { Generator } from './components/Generator/Generator';
 import { KeepValue } from './components/KeepValue/KeepValue';
 import { ProductForm } from './components/RegistrationForm/ProductForm';
@@ -20,9 +21,9 @@ function App() {
       {/* <KeepValue /> */}
       {/* <RegistrationFormRHF /> */}
       {/* <ProductForm /> */}
-      <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+      <AuthProvider value={{ isLoggedIn, setIsLoggedIn }}>
         <AuthInfo />
-      </AuthContext.Provider>
+      </AuthProvider>
     </>
   );
 }
