@@ -2,23 +2,21 @@ import {
   type ComponentProps,
   useId,
   forwardRef,
+  ComponentPropsWithRef,
 } from 'react';
 
 // type Props = {
 //   label: string;
 // } & ComponentProps<'input'>;
 
-interface Props extends ComponentProps<'input'> {
+interface Props extends ComponentPropsWithRef<'input'> {
   label: string;
 }
 
 // HTMLInputElement
 
 export const Input = forwardRef(
-  (
-    { label, ...rest }: Props,
-    ref: React.ForwardedRef<HTMLInputElement>
-  ) => {
+  ({ label, ...rest }: Props, ref: React.ForwardedRef<HTMLInputElement>) => {
     const id = useId();
     return (
       <div>
