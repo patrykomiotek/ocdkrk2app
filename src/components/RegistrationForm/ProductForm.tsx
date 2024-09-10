@@ -12,28 +12,26 @@ export const ProductForm = () => {
     resolver: zodResolver(productSchema),
   });
 
-  const AIRTABLE_API_TOKEN =
-    'pat7B5cvhvFKLqRT5.8e46a5eb968dac90f793dfd22dccd55e61676d5731242661e589ccac3f062b8d';
+  // webpack: process.env.NAME;
+  const AIRTABLE_API_URL = import.meta.env.VITE_API_BASE_URL;
+  const AIRTABLE_API_TOKEN = import.meta.env.VITE_API_TOKEN;
 
   const handleProductFormSubmit: SubmitHandler<ProductDto> = async (data) => {
     try {
-      const response = await fetch(
-        'https://api.airtable.com/v0/appZn629wc9P5ZP7M/products',
-        {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${AIRTABLE_API_TOKEN}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            records: [
-              {
-                fields: data,
-              },
-            ],
-          }),
+      const response = await fetch(`${AIRTABLE_API_URL}/products`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${AIRTABLE_API_TOKEN}`,
+          'Content-Type': 'application/json',
         },
-      );
+        body: JSON.stringify({
+          records: [
+            {
+              fields: data,
+            },
+          ],
+        }),
+      });
 
       if (!response.ok) {
         throw new Error('Failed to submit the form');
