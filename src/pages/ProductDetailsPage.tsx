@@ -9,6 +9,9 @@ type PageParams = {
 };
 
 export const ProductDetailsPage = () => {
+  // const { data, isLoading, isError } = useApi<ApiResponseProduct>(getProducts);
+  // const { data, isLoading, isError } = useApi<ApiResponseProduct>(() => getProduct(id));
+
   const [data, setData] = useState<ApiResponseProduct | undefined>(undefined);
   const [isLoading, setLoading] = useState(true);
   const [isError, setError] = useState<string | null>(null);
