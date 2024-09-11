@@ -5,6 +5,7 @@ import { HomePage } from './pages/HomePage';
 import { ProductsListPage } from './pages/ProductsListPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { CreateProductPage } from './pages/CreateProductPage';
+import { ProductDto } from '@apptypes/types-schema';
 
 type Route = Record<
   string,
@@ -27,7 +28,7 @@ export const Route: Route = {
   PRODUCTS_DETAILS: {
     path: '/products/:id',
     title: 'Products details',
-    // dynamicPath: (id: ProductDto["id"]) => `/products/${id}`,
+    dynamicPath: (id: ProductDto['id']) => `/products/${id}`,
   },
   CREATE_PRODUCT: {
     path: '/products/create',
