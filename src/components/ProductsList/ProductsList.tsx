@@ -1,4 +1,6 @@
 import { ApiResponseProduct } from '@services/products';
+import { Link } from 'react-router-dom';
+import { Route } from 'routes';
 
 type Props = {
   products: ApiResponseProduct[];
@@ -7,9 +9,13 @@ type Props = {
 const ProductTableRow = ({ product }: { product: ApiResponseProduct }) => (
   <tr className="border-b hover:bg-gray-100 dark:hover:bg-gray-700">
     <td className="py-2 px-4">
-      <button className="text-blue-500 hover:underline focus:outline-none">
+      <Link
+        to={Route.PRODUCTS_DETAILS.dynamicPath?.(product.id) as string} // ;)
+        // href={`/products/${product.id}`}
+        className="text-blue-500 hover:underline focus:outline-none"
+      >
         {product.fields.name}
-      </button>
+      </Link>
     </td>
     <td className="py-2 px-4">${product.fields.price}</td>
     <td className="py-2 px-4">{product.fields.description}</td>
