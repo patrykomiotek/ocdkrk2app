@@ -19,6 +19,7 @@ export const AuthCredentialsWithContext = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
+    // @ts-expect-error
     <AuthProvider value={{ isLoggedIn, setIsLoggedIn }}>
       <AuthCredentials />
     </AuthProvider>
