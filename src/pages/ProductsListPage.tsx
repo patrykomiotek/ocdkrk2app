@@ -7,32 +7,34 @@ import { useEffect, useState } from 'react';
 import { ZodError } from 'zod';
 
 export const ProductsListPage = () => {
-  const [data, setData] = useState<ApiResponseProduct[]>([]);
-  const [isLoading, setLoading] = useState(true);
-  const [isError, setError] = useState<string | null>(null);
+  const { data, isLoading, isError } = useApi<AxiosResponse<ApiResponseProducts>>(getProducts);
 
-  useEffect(() => {}, [isLoading]);
+  // const [data, setData] = useState<ApiResponseProduct[]>([]);
+  // const [isLoading, setLoading] = useState(true);
+  // const [isError, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const response = await getProducts();
-        setData(response.data.records);
-      } catch (error) {
-        // if (error instanceof AxiosError) {
+  // useEffect(() => {}, [isLoading]);
 
-        // }
-        // if (error instanceof ZodError) {
+  // useEffect(() => {
+  //   const loadData = async () => {
+  //     try {
+  //       const response = await getProducts();
+  //       setData(response.data.records);
+  //     } catch (error) {
+  //       // if (error instanceof AxiosError) {
 
-        // }
-        setError('Oh no!');
-      } finally {
-        setLoading(false);
-      }
-    };
+  //       // }
+  //       // if (error instanceof ZodError) {
 
-    loadData();
-  }, []);
+  //       // }
+  //       setError('Oh no!');
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   loadData();
+  // }, []);
 
   if (isLoading) {
     return <div className="text-center">Loading...</div>;
@@ -41,10 +43,12 @@ export const ProductsListPage = () => {
     return <div className="text-center text-red-500">Error: {isError}</div>;
   }
 
+  const products = data?.data.records;
+
   return (
     <div>
       <Header>Products list</Header>
-      <ProductsList products={data} />
+      {products && <ProductsList products={products} />}
     </div>
   );
 };

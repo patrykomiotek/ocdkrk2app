@@ -38,6 +38,7 @@ type State<T> =
 
 // data, isLoading = true, isError = true
 
+// export const useApi = <T>(fetcher: () => Promise<AxiosResponse<T>>) => {
 export const useApi = <T>(fetcher: () => Promise<T>) => {
   const [state, setState] = useState<State<T>>({
     data: undefined,
