@@ -50,7 +50,7 @@ const myResponse: DeepReadonly<ApiResponseProduct> = {
 // myResponse.createdTime = 'sth';
 // myResponse.fields.description = 'sth';
 
-interface ApiResponseProducts {
+export interface ApiResponseProducts {
   records: ApiResponseProduct[];
 }
 

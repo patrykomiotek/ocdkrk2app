@@ -1,7 +1,8 @@
 import { ProductsList } from '@components/ProductsList/ProductsList';
-import { ApiResponseProduct, getProducts } from '@services/products';
+import useApi from '@hooks/useApi';
+import { ApiResponseProduct, ApiResponseProducts, getProducts } from '@services/products';
 import { Header } from '@ui';
-import { AxiosError } from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
 import { ZodError } from 'zod';
 
@@ -10,9 +11,7 @@ export const ProductsListPage = () => {
   const [isLoading, setLoading] = useState(true);
   const [isError, setError] = useState<string | null>(null);
 
-  // useEffect(() => {
-
-  // }, [isLoading]);
+  useEffect(() => {}, [isLoading]);
 
   useEffect(() => {
     const loadData = async () => {

@@ -38,35 +38,70 @@ type State<T> =
 
 // data, isLoading = true, isError = true
 
-const useApi = <T>(apiFunction: ApiFunction<T>) => {
-  const [data, setData] = useState<T | undefined>(undefined);
-  const [isLoading, setLoading] = useState(true);
-  const [isError, setError] = useState<string | null>(null);
+export const useApi = <T>(fetcher: () => Promise<T>) => {
+  const [state, setState] = useState<State<T>>({
+    data: undefined,
+    isLoading: true,
+    isError: false,
+  });
+  const { data, isLoading, isError } = state;
 
+  // TODO: cancelation
   useEffect(() => {
-    const fetchData = async () => {
+    const loadData = async () => {
       try {
-        const response = await apiFunction();
-        setData(response.data);
-        // setError('yolo!');
+        const response = await fetcher();
+
+        setState({
+          data: response,
+          isLoading: false,
+          isError: false,
+        });
       } catch (error) {
-        if (error instanceof AxiosError) {
-          setError(`Network error: ${error.message}`);
-        } else if (error instanceof ZodError) {
-          setError(`Data validation error: ${error.message}`);
-        } else {
-          setError('An unexpected error occurred');
-        }
-      } finally {
-        setLoading(false);
+        // error
+        setState({
+          data: undefined,
+          isLoading: false,
+          isError: true,
+        });
       }
     };
 
-    fetchData();
-  }, [apiFunction]);
+    loadData();
+  }, []);
 
   return { data, isLoading, isError };
 };
+
+// const useApi = <T>(apiFunction: ApiFunction<T>) => {
+//   const [data, setData] = useState<T | undefined>(undefined);
+//   const [isLoading, setLoading] = useState(true);
+//   const [isError, setError] = useState<string | null>(null);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const response = await apiFunction();
+//         setData(response.data);
+//         // setError('yolo!');
+//       } catch (error) {
+//         if (error instanceof AxiosError) {
+//           setError(`Network error: ${error.message}`);
+//         } else if (error instanceof ZodError) {
+//           setError(`Data validation error: ${error.message}`);
+//         } else {
+//           setError('An unexpected error occurred');
+//         }
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchData();
+//   }, [apiFunction]);
+
+//   return { data, isLoading, isError };
+// };
 
 // import { useEffect, useState } from 'react';
 // import { ApiResponseProduct, ApiResponseProducts } from '@services/products.ts';
