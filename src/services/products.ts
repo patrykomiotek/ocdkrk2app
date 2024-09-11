@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { CreateProductDto } from '../types/types-schema';
+import { CreateProductDto, ProductDto } from '../types/types-schema';
 import { api } from './api';
 
 // webpack: process.env.NAME;
@@ -114,6 +114,12 @@ export const saveProduct = async (data: CreateProductDto) => {
 
 export const getProducts = async (): Promise<AxiosResponse<ApiResponseProducts>> => {
   return api.get('/products');
+};
+
+export const getProduct = async (
+  id: ProductDto['id'],
+): Promise<AxiosResponse<ApiResponseProduct>> => {
+  return api.get(`/products/${id}`);
 };
 
 export interface UpdateProductDto extends Partial<CreateProductDto> {
