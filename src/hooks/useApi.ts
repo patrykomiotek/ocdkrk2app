@@ -47,31 +47,35 @@ export const useApi = <T>(fetcher: () => Promise<T>) => {
   });
   const { data, isLoading, isError } = state;
 
+  const loadData = async () => {
+    try {
+      const response = await fetcher();
+
+      setState({
+        data: response,
+        isLoading: false,
+        isError: false,
+      });
+    } catch (error) {
+      // error
+      setState({
+        data: undefined,
+        isLoading: false,
+        isError: true,
+      });
+    }
+  };
+
   // TODO: cancelation
   useEffect(() => {
-    const loadData = async () => {
-      try {
-        const response = await fetcher();
-
-        setState({
-          data: response,
-          isLoading: false,
-          isError: false,
-        });
-      } catch (error) {
-        // error
-        setState({
-          data: undefined,
-          isLoading: false,
-          isError: true,
-        });
-      }
-    };
-
     loadData();
   }, []);
 
-  return { data, isLoading, isError };
+  const refetch = () => {
+    loadData();
+  };
+
+  return { data, isLoading, isError, refetch };
 };
 
 // const useApi = <T>(apiFunction: ApiFunction<T>) => {

@@ -1,14 +1,26 @@
 import { ProductsList } from '@components/ProductsList/ProductsList';
 import useApi from '@hooks/useApi';
 import { ApiResponseProduct, ApiResponseProducts, getProducts } from '@services/products';
-import { Header } from '@ui';
+import { useQuery } from '@tanstack/react-query';
+import { Button, Header } from '@ui';
 import { AxiosError, AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
 import { ZodError } from 'zod';
 
 export const ProductsListPage = () => {
-  const { data, isLoading, isError } = useApi<AxiosResponse<ApiResponseProducts>>(getProducts);
+  // const [count, setCount] = useState(0);
+  // setCount(1); // troll
 
+  // #3
+  const { data, isError, isLoading, refetch } = useQuery({
+    queryKey: ['products-list'],
+    queryFn: getProducts,
+  });
+
+  // #2
+  // const { data, isLoading, isError } = useApi<AxiosResponse<ApiResponseProducts>>(getProducts);
+
+  // # 1
   // const [data, setData] = useState<ApiResponseProduct[]>([]);
   // const [isLoading, setLoading] = useState(true);
   // const [isError, setError] = useState<string | null>(null);
@@ -48,6 +60,10 @@ export const ProductsListPage = () => {
   return (
     <div>
       <Header>Products list</Header>
+      {/* <Button onClick={() => refetch()}>Refetch</Button> */}
+      {/* <p>{count}</p> */}
+      {/* <Button onClick={() => refetch()}>Refetch</Button> */}
+      {/* <Button onClick={setCount}>Refetch</Button> */}
       {products && <ProductsList products={products} />}
     </div>
   );
