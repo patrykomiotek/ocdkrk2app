@@ -17,6 +17,12 @@ export class ErrorBoundary extends Component<Props, State> {
     isError: false,
   };
 
+  static getDerivedStateFromError(error: Error) {
+    // Update state so the next render will show the fallback UI.
+    // Sentry.captureError(error)
+    // return { hasError: true };
+  }
+
   public componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     this.setState({ isError: true });
   }
