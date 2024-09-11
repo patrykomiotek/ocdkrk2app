@@ -94,3 +94,53 @@ export const saveProduct = async (data: CreateProductDto) => {
   // return response.json() as unknown as ApiResponse<ProductFields>; TAK NIE!!!
   return response.json() as Promise<ApiResponse<ProductFields>>;
 };
+
+export const getProducts = async (): Promise<ApiResponseProducts> => {
+  const response = await fetch(`${AIRTABLE_API_URL}/products?maxRecords=100&view=Grid%20view`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${AIRTABLE_API_TOKEN}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch products');
+  }
+
+  return response.json();
+};
+
+export interface UpdateProductDto extends Partial<CreateProductDto> {
+  id: string;
+}
+
+export const updateProduct = async (
+  data: UpdateProductDto,
+): Promise<ApiResponse<ProductFields>> => {
+  const response = await fetch(`${AIRTABLE_API_URL}/products`, {
+    method: 'PATCH',
+    headers: {
+      Authorization: `Bearer ${AIRTABLE_API_TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      records: [
+        {
+          id: data.id,
+          fields: {
+            name: data.name,
+            description: data.description,
+            price: data.price,
+            dimensions: data.dimensions,
+          },
+        },
+      ],
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to update the product');
+  }
+
+  return response.json();
+};
