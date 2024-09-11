@@ -1,4 +1,6 @@
+import { AxiosResponse } from 'axios';
 import { CreateProductDto } from '../types/types-schema';
+import { api } from './api';
 
 // webpack: process.env.NAME;
 const AIRTABLE_API_URL = import.meta.env.VITE_API_BASE_URL;
@@ -15,7 +17,7 @@ interface ProductFields {
   };
 }
 
-interface ApiResponseProduct {
+export interface ApiResponseProduct {
   id: string;
   createdTime: string;
   fields: {
@@ -95,19 +97,23 @@ export const saveProduct = async (data: CreateProductDto) => {
   return response.json() as Promise<ApiResponse<ProductFields>>;
 };
 
-export const getProducts = async (): Promise<ApiResponseProducts> => {
-  const response = await fetch(`${AIRTABLE_API_URL}/products?maxRecords=100&view=Grid%20view`, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${AIRTABLE_API_TOKEN}`,
-    },
-  });
+// export const getProducts = async (): Promise<ApiResponseProducts> => {
+//   const response = await fetch(`${AIRTABLE_API_URL}/products?maxRecords=100&view=Grid%20view`, {
+//     method: 'GET',
+//     headers: {
+//       Authorization: `Bearer ${AIRTABLE_API_TOKEN}`,
+//     },
+//   });
 
-  if (!response.ok) {
-    throw new Error('Failed to fetch products');
-  }
+//   if (!response.ok) {
+//     throw new Error('Failed to fetch products');
+//   }
 
-  return response.json();
+//   return response.json();
+// };
+
+export const getProducts = async (): Promise<AxiosResponse<ApiResponseProducts>> => {
+  return api.get('/products');
 };
 
 export interface UpdateProductDto extends Partial<CreateProductDto> {
