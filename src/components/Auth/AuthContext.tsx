@@ -8,7 +8,6 @@ type ContextData = {
   isLoggedIn: boolean;
   toggle: () => void;
   logIn?: () => void;
-  logOut?: () => void;
 };
 
 // export const AuthContext = createContext<ContextData | undefined>(undefined);
