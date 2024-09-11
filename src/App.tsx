@@ -18,8 +18,6 @@ import { ErrorBoundary } from '@components/ErrorBoundary';
 const queryClient = new QueryClient();
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-
   return (
     <>
       {/* <Generator /> */}
@@ -30,7 +28,7 @@ function App() {
       {/* <ProductForm /> */}
 
       <QueryClientProvider client={queryClient}>
-        <AuthProvider value={{ isLoggedIn, setIsLoggedIn }}>
+        <AuthProvider>
           <RouterProvider router={router} />
         </AuthProvider>
         <ReactQueryDevtools initialIsOpen={true} />

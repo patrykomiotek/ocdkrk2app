@@ -4,11 +4,11 @@ import { ApiResponseProduct, ApiResponseProducts, getProducts } from '@services/
 import { useQuery } from '@tanstack/react-query';
 import { Button, Header } from '@ui';
 import { AxiosError, AxiosResponse } from 'axios';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { ZodError } from 'zod';
 
 export const ProductsListPage = () => {
-  // const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
   // setCount(1); // troll
 
   // #3
@@ -16,6 +16,17 @@ export const ProductsListPage = () => {
     queryKey: ['products-list'],
     queryFn: getProducts,
   });
+
+  const calculatedValue = useMemo(() => {
+    return new Date(); // complex calculations ;)
+  }, [count]);
+  // const calculatedValue = () => {
+  //   return new Date(); // complex calculations ;)
+  // };
+
+  const handleAlert = useCallback(() => {
+    alert('Hello');
+  }, []);
 
   // #2
   // const { data, isLoading, isError } = useApi<AxiosResponse<ApiResponseProducts>>(getProducts);
@@ -64,6 +75,17 @@ export const ProductsListPage = () => {
       {/* <p>{count}</p> */}
       {/* <Button onClick={() => refetch()}>Refetch</Button> */}
       {/* <Button onClick={setCount}>Refetch</Button> */}
+      {/* <button onClick={alert('Hello')}>Click me</button> // źle */}
+      {/* <button onClick={() => alert('Hello')}>Click me</button> */}
+      {/* <button onClick={alert}>Click me</button> */}
+
+      <button onClick={() => alert('Hello')}>Click me</button>
+      <button onClick={handleAlert}>Click me</button>
+
+      <p>{calculatedValue.toLocaleTimeString()}</p>
+
+      <Button onClick={() => setCount(count + 1)}>{count}</Button>
+
       {products && <ProductsList products={products} />}
     </div>
   );

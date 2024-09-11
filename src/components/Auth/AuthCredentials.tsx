@@ -9,7 +9,7 @@ export const AuthCredentials = () => {
 
   const handleToggle = () => {
     // TODO: refactor
-    context.setIsLoggedIn(!context.isLoggedIn);
+    context.toggle();
   };
 
   return (
