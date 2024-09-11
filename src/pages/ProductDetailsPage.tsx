@@ -1,3 +1,4 @@
+import { ProductDetails } from '@components/ProductDetails/ProductDetails';
 import { ApiResponseProduct, getProduct } from '@services/products';
 import { Header } from '@ui';
 import { useEffect, useState } from 'react';
@@ -54,7 +55,7 @@ export const ProductDetailsPage = () => {
   return (
     <div>
       <Header>Products details</Header>
-      <ProductDetails product={data} />
+      {data && <ProductDetails data={data} />}
     </div>
   );
 };
