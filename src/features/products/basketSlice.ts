@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../store';
 import { ProductDto } from '@apptypes/types-schema';
+import { ApiResponseProduct } from '@services/products';
 
 // Define a type for the slice state
 export interface State {
-  products: ProductDto[];
+  // products: ProductDto[];
+  products: ApiResponseProduct[];
 }
 
 // Define the initial state using that type
@@ -17,11 +19,11 @@ export const basketSlice = createSlice({
   initialState,
   reducers: {
     // Use the PayloadAction type to declare the contents of `action.payload`
-    add: (state, action: PayloadAction<ProductDto>) => {
+    add: (state, action: PayloadAction<ApiResponseProduct>) => {
       // state.value += action.payload;
       state.products.push(action.payload);
     },
-    remove: (state, action: PayloadAction<ProductDto['id']>) => {
+    remove: (state, action: PayloadAction<ApiResponseProduct['id']>) => {
       // state.value -= action.payload;
       state.products = state.products.filter((elem) => elem.id !== action.payload);
     },

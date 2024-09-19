@@ -14,7 +14,7 @@ export const AuthCredentials = () => {
 
   return (
     <div>
-      <p>Is user logged? {context.isLoggedIn ? 'YES' : 'NO'}</p>
+      <p className="dark:text-gray-300">Is user logged? {context.isLoggedIn ? 'YES' : 'NO'}</p>
       <Button onClick={handleToggle}>Toggle</Button>
     </div>
   );

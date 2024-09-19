@@ -1,5 +1,5 @@
 import { ChangeEvent, type FormEventHandler, useRef } from 'react';
-import { Input } from '@ui';
+import { Button, Header, Input } from '@ui';
 
 export const RegistrationFormRefs = () => {
   const emailFieldRef = useRef<HTMLInputElement>(null);
@@ -31,7 +31,7 @@ export const RegistrationFormRefs = () => {
 
   return (
     <div>
-      <h2>User Information</h2>
+      <Header>User Information</Header>
       <form onSubmit={handleSubmit}>
         <Input ref={emailFieldRef} label="Email" type="email" defaultValue="alamakota@wp.pl" />
         <Input ref={passwordFieldRef} label="Password" type="password" />
@@ -61,7 +61,7 @@ export const RegistrationFormRefs = () => {
             onChange={(e) => setLanguage(e.target.value)}
           />
         </div> */}
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
       </form>
     </div>
   );

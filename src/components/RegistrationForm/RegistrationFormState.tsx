@@ -1,5 +1,5 @@
 import { type FormEventHandler, useState } from 'react';
-import { Input } from '@ui';
+import { Button, Header, Input } from '@ui';
 
 export const RegistrationFormState = () => {
   const [email, setEmail] = useState<string>('ala@makota.pl');
@@ -15,7 +15,7 @@ export const RegistrationFormState = () => {
 
   return (
     <div>
-      <h2>User Information</h2>
+      <Header>User Information</Header>
       <p>Email: {email}</p>
       <p>Password: {password}</p>
       <form onSubmit={handleSubmit}>
@@ -58,7 +58,7 @@ export const RegistrationFormState = () => {
             onChange={(e) => setLanguage(e.target.value)}
           />
         </div> */}
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
       </form>
     </div>
   );

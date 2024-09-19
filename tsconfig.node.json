@@ -15,7 +15,7 @@
       "@apptypes/*": ["types/*"]
     },
 
-    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "types": ["node", "jest", "vitest/globals", "@testing-library/jest-dom"],
     "target": "ES2022",
     "lib": ["ES2023"],
     "module": "ESNext",
